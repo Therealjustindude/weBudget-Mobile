@@ -11,6 +11,10 @@ let data=[
 ]
 
 const Expenses = () => {
+	const handlePress = (id) => {
+		console.log(id)
+	}
+
 	return (
 	<SafeAreaView >
 	  <View >
@@ -21,14 +25,16 @@ const Expenses = () => {
 		  <Text style={styles.headText}>Amount</Text>
 		</View>
 		<FlatList
-			data={data}
+			data={data}		
 			renderItem={({ item }) => {
-				return(<TouchableOpacity style={styles.rowCard}>
+				return (
+				<TouchableOpacity onPress={() => handlePress(item.id)} style={styles.rowCard}>
 					<Text>{item.paid}</Text>
 					<Text>{item.date}</Text>
 					<Text>{item.title}</Text>
 					<Text>{item.amount}</Text>
-				</TouchableOpacity>	)
+				</TouchableOpacity>
+				)
 			}}
 			keyExtractor={item => item.id}
 		/>
